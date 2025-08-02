@@ -1,0 +1,30 @@
+
+
+section.parentBlob {
+
+    @apply relative flex justify-center items-center 
+      
+}
+section .blob {
+
+    @apply absolute w-[550px] h-[500px] 
+      
+}
+
+.svgTitle {
+
+    animation: titleAnimation 1s linear infinite;
+}
+
+
+
+
+
+@keyframes titleAnimation {
+
+    100% {
+        stroke-dashoffset: 160;
+    }
+    
+}
+

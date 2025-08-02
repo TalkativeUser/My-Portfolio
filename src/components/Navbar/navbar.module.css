@@ -1,0 +1,104 @@
+
+/*  if you run the code and remove all // comments will takes the new design
+
+يعنى لو فكيت الكومنتات دى كلها وعطلت الكود اللى تحت اللى هو شغال ده هيديك ناف مختلف تماما*/
+
+/* .navigation {
+  @apply w-[540px] h-32 m-auto flex justify-around items-center text-white shadow-navShadow rounded-3xl bg-[#303640];
+}
+
+.navigation li a {
+  @apply flex items-center justify-center flex-col;
+}
+
+.navigation li a .icon {
+  @apply absolute text-3xl w-16 h-16 flex justify-center items-center rounded-full;
+} */
+
+/* The global() method stay active class with the same name that is NavLink make it */
+/* الجلوبال دى مهمتها انها بتخلى الكلاس اسمه زى ما هو مش بتضيفلة الارقام والحروف العشوائيه من الاخر بتخلى الكلاس ده كأنه عادى مش موديول خالص عشان بس يقدر يتطابق مع الكلاس اللى راجع من ال  NavLink */
+/* .navigation li a:global(.active) .icon {
+  @apply bg-[#00ff80] -translate-y-14 transition-[1s];
+}
+
+.navigation li a .icon::before {
+  @apply content-[''] absolute inset-2 bg-[#303640] rounded-full -z-10 scale-0 transition-[0.5s];
+}
+
+.navigation li a:global(.active) .icon::before {
+  @apply scale-100;
+}
+
+.navigation li a .text {
+  @apply absolute text-[0.75em] text-black rounded-2xl translate-y-5 px-2 py-[2px] bg-white opacity-0 transition-[0.5s] delay-0;
+}
+
+.navigation li a:global(.active) .text {
+  @apply opacity-100 translate-y-2;
+}
+
+.navigation li a:global(.active) .text::after {
+  @apply content-[''] absolute -bottom-4 right-[50%] translate-x-[50%] w-1 h-1 rounded-full bg-[#00ff80] shadow-pointActivNav transition-[0.5s];
+} */
+
+
+
+.navigation {
+
+  
+
+  @apply w-[400px] h-[70px] m-auto   rounded-[10px]  bg-transparent relative ;
+}
+
+.navigation ul {
+
+  @apply flex w-[350px] justify-evenly m-auto items-center relative
+}
+.navigation ul li{
+
+  @apply relative w-[70px] h-[70px] z-[1] flex justify-center items-center
+}
+.navigation ul li a{
+
+  @apply relative flex justify-center items-center flex-col w-[100%] text-center font-[500] 
+}
+
+.navigation li a .icon {
+  @apply relative flex justify-center  leading-[75px] text-3xl transition-[0.5s]  ;
+} 
+
+.navigation  li a:global(.active) .icon {
+@apply -translate-y-[35px]
+  
+}
+.navigation li a .text {
+@apply absolute text-[0.75em] font-[400] tracking-[.05em] transition-[0.5s] opacity-0
+       translate-y-5
+  
+}
+.navigation li a:global(.active) .text {
+@apply  opacity-100 translate-y-[10px]
+  
+}
+
+.navigation .indicator {
+
+  @apply absolute top-[-43%] w-[60px] h-[60px] bg-gradient-to-r from-blue-500 to-purple-600
+    hover:from-blue-600 hover:to-purple-700 text-white  
+     left-[20px] rounded-full   
+
+     
+   
+}
+
+
+
+/* .indicator::after {
+
+  @apply content-[''] absolute top-[50%] right-[-22px] w-5 h-5 bg-transparent rounded-tl-[20px]  shadow-[-1px_-10px_0_0_#2f1952]
+}
+.indicator::before {
+
+  @apply content-[''] absolute top-[50%] left-[-22px] w-5 h-5 bg-transparent rounded-tr-[20px]  shadow-[1px_-10px_0_0_#2f1952]
+}  */
+
