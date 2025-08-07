@@ -1,216 +1,191 @@
-
-
-
-import  {motion, type Variants} from 'framer-motion'
-import styles from './home.module.css'
-import { useEffect, useRef, useState } from 'react'
-import BgParticles from '../../components/Particles/BgParticles.js'
+import { motion, type Variants } from "framer-motion";
+import styles from "./home.module.css";
+import { useEffect, useRef, useState } from "react";
+import BgParticles from "../../components/Particles/BgParticles.js";
 export default function Home() {
-  const blobBg='#7524b7'
-  const words:string=`A passionate Front-end React Developer , Looking to leverage my experience as a Front End Developer into a challenging position to create innovative and responsive websites.`
- const arrayOfWords=words.split(' ')
+  const blobBg = "#7524b7";
+  const words: string = `A passionate Front-end React Developer , Looking to leverage my experience as a Front End Developer into a challenging position to create innovative and responsive websites.`;
+  const arrayOfWords = words.split(" ");
 
-//  There is an error here , re print every second ❌❌
-//  console.log(arrayOfWords);
-const [flipState, setFlipState] = useState<"in" | "out">("in");
-const [text, setText] = useState("Next.js");
-const frameWorkRef = useRef<HTMLSpanElement>(null);
+  //  There is an error here , re print every second ❌❌
+  //  console.log(arrayOfWords);
+  const [flipState, setFlipState] = useState<"in" | "out">("in");
+  const [text, setText] = useState("Next.js");
+  const frameWorkRef = useRef<HTMLSpanElement>(null);
 
-const pVariant = {
-  hidden: {
-    opacity: 1,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
+  const pVariant = {
+    hidden: {
+      opacity: 1,
     },
-  },
-};
-
-const spanVariant: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-    x: -25,
-   rotateY:360
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    x: 0,
-       rotateY:10,
-
-
-    transition: {
-      type: "spring" as const,
-      stiffness: 50,
-      rotateY :{
-        duration:0.5
-      }
-   
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
     },
-  },
-};
+  };
 
-
-const flipVariants: Variants = {
-  out: {
-    rotateX: 90,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
+  const spanVariant: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      x: -25,
+      rotateY: 360,
     },
-  },
-  in: {
-    rotateX: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      rotateY: 10,
+
+      transition: {
+        type: "spring" as const,
+        stiffness: 50,
+        rotateY: {
+          duration: 0.5,
+        },
+      },
     },
-  },
-};
+  };
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setFlipState("out");
+  const flipVariants: Variants = {
+    out: {
+      rotateX: 90,
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+      },
+    },
+    in: {
+      rotateX: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+      },
+    },
+  };
 
-    setTimeout(() => {
-      // نغير النص وهو مختفي
-      setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
-      setFlipState("in");
-    }, 600); // نفس مدة الدوران في flipVariants
-  }, 3000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFlipState("out");
 
-  return () => clearInterval(interval);
-}, []);
+      setTimeout(() => {
+        // نغير النص وهو مختفي
+        setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
+        setFlipState("in");
+      }, 600); // نفس مدة الدوران في flipVariants
+    }, 3000);
 
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-        <motion.div 
-    className={` ${styles.homeSection} relative `}
-      initial={{x:"-100vw"}}
-      animate={{x:0 , transition:{ duration:0.3}}} 
-       exit={{y:"-100vh",transition:{duration:0.2 } }}>
-
-   <BgParticles/>
-      
-      <div className="flex justify-center items-center min-h-screen  ">
-
-          <section className={` w-[50%] flex justify-center `}>
-                 
-                <motion.section
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="h-[100%] flex flex-col   "
-                      >
-
-
-                 <svg className={`w-[100%] h-[60px] ${styles.svgTitle}`}>
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stopColor="#60a5fa" />     {/* blue-400 */}
-      <stop offset="100%" stopColor="#a78bfa" />   {/* purple-400 */}
-    </linearGradient>
-  </defs>
-
-  <symbol id="text">
-    <text
-      fill="rgba(250,250,250 ,0)"
-      stroke={"white"}
-      strokeLinejoin="round"
-      strokeDasharray={80}
-      strokeWidth="1px"
-      className="text-6xl font-[700]"
-      textAnchor="start-0"
-      x="0%"
-      y="90%"
+    <div
+      className={` ${styles.homeSection} relative  pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  `}
     >
-      Hi, I'm Muhammed
-    </text>
-  </symbol>
+      <BgParticles/>
 
-  <use xlinkHref="#text" />
-</svg>
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 min-h-screen  ">
+        <section
+          className={`flex justify-center mt-28 md:mt-28 lg:mt-0  
+                                lg:justify-end xl:justify-center  p-5 
+            
+            `}
+        >
+          <motion.section
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="h-[100%] flex flex-col justify-center  "
+          >
+            <svg className={`w-[100%] h-[60px] ${styles.svgTitle}`}>
+              <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#60a5fa" /> {/* blue-400 */}
+                  <stop offset="100%" stopColor="#a78bfa" /> {/* purple-400 */}
+                </linearGradient>
+              </defs>
 
+              <symbol id="text">
+                <text
+                  fill="rgba(250,250,250 ,0)"
+                  stroke={"white"}
+                  strokeLinejoin="round"
+                  strokeDasharray={80}
+                  strokeWidth="1px"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl  font-[700]"
+                  textAnchor="start-0"
+                  x="0%"
+                  y="90%"
+                >
+                  Hi, I'm Muhammed
+                </text>
+              </symbol>
 
-                      <h1 
-                      
-                     
-                      className='text-white text-4xl mt-2 font-[600]  ' >Front-End Developer 
-                      
-                  <motion.span
-                      ref={frameWorkRef}
-                      className="inline-block origin-bottom ms-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent  "
-                      variants={flipVariants}
-                      initial="in"
-                      animate={flipState}
-                      style={{
-                        transformStyle: 'preserve-3d',
-                        perspective: 600,
-                      }}
+              <use xlinkHref="#text" />
+            </svg>
+
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl mt-2 font-[600]  ">
+              Front-End Developer
+              <motion.span
+                ref={frameWorkRef}
+                className="inline-block origin-bottom ms-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent  "
+                variants={flipVariants}
+                initial="in"
+                animate={flipState}
+                style={{
+                  transformStyle: "preserve-3d",
+                  perspective: 600,
+                }}
+              >
+                {text}
+              </motion.span>
+            </h1>
+
+            <motion.p
+              variants={pVariant}
+              initial="hidden"
+              animate="visible"
+              className="mt-2 text-lg md:text-2xl lg:text-lg xl:text-2xl max-w-xl flex flex-wrap text-white "
+            >
+              {arrayOfWords.map((word, idx) => (
+                <span className="mr-2" key={idx}>
+                  {word.split("").map((letter, wordIndex) => (
+                    <motion.span
+                      key={wordIndex}
+                      className="inline-block whitespace-nowrap "
+                      variants={spanVariant}
                     >
-                      {text}
+                      {letter}
                     </motion.span>
-                  
-                        
-                        
-                        
-                        
-                         </h1>
-                    
-                    <motion.p
-                        variants={pVariant}
-                        initial="hidden"
-                        animate="visible"
-                        className="mt-2 text-lg md:text-2xl max-w-xl flex flex-wrap text-white "
-                      >
+                  ))}
+                </span>
+              ))}
+            </motion.p>
 
-                                    {
+            <div className="mt-8 flex gap-4">
+              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                {" "}
+                Download CV{" "}
+              </button>
+              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                {" "}
+                Download CV{" "}
+              </button>
+            </div>
+          </motion.section>
+        </section>
 
-                                      arrayOfWords.map((word , idx)=>   <span className='mr-2' key={idx} >
-                                            {word.split('').map((letter, wordIndex) => (
-                                              <motion.span
-                                                key={wordIndex}
-                                                className="inline-block whitespace-nowrap" 
-                                                variants={spanVariant}
-                                              >
-                                                      {letter}
-                                              </motion.span>
-                                            ))}</span>)
-
-                                    }
-
-                   
-               
-                      
-
-                      </motion.p>
-
-                      
-                      <div className='mt-8 flex gap-4'  >
-                        
-                        <button  className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"> Download CV </button>
-                        <button  className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"> Download CV </button>
-                      </div>
-                      </motion.section>
-
-
-                 
-          </section> 
-
-          <section className={`${styles.parentBlob} w-[50%] `}>
-
-                    <div className={`${styles.blob} drop-shadow-[0_0_80px_#7524b799] `}>
-                        <svg viewBox="0 0 500 500" width="100%" id="blobSvg"  >
-                          <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" style={{ stopColor: blobBg }} />
-                              <stop offset="100%" style={{ stopColor: blobBg }} />
-                            </linearGradient>
-                            {/* this image appears as background image to svg blob */}
-                              {/* <pattern id="imgPattern" patternUnits="userSpaceOnUse" width="500" height="500">
+        <section className={`${styles.parentBlob} pt-52 `}>
+          <div className={`${styles.blob} drop-shadow-[0_0_80px_#7524b799] `}>
+            <svg viewBox="0 0 500 500" width="100%" id="blobSvg">
+              <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: blobBg }} />
+                  <stop offset="100%" style={{ stopColor: blobBg }} />
+                </linearGradient>
+                {/* this image appears as background image to svg blob */}
+                {/* <pattern id="imgPattern" patternUnits="userSpaceOnUse" width="500" height="500">
                                   <image
                                     xlinkHref="./IMG_9242-removebg-preview.png"
                                     x="70"
@@ -220,12 +195,14 @@ useEffect(() => {
                                     preserveAspectRatio="xMidYMid slice"
                                   />
                               </pattern> */}
-                          </defs>
+              </defs>
 
-          
-                          <path fill="url(#gradient)" >
-                            <animate attributeName='d' dur='6s' repeatCount="indefinite" 
-                              values='M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
+              <path fill="url(#gradient)">
+                <animate
+                  attributeName="d"
+                  dur="6s"
+                  repeatCount="indefinite"
+                  values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
                               
                               M423,320.5Q444,391,373.5,402.5Q403,414,251,411Q199,408,146.5,385.5Q94,363,77,306Q62,250,62.5,197Q115,154,152,119Q199,94,250.5,91.5Q302,89,353,113.5Q404,138,403,194Q402,250,423,320.5Z;
 
@@ -237,48 +214,62 @@ useEffect(() => {
                                   
                               M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
 
-                              '
-                            >
+                              "
+                ></animate>
+              </path>
+            </svg>
 
-                            </animate>
+            <div className="imgBox w-[190px] sm:w-[400px] h-[500px] absolute top-[-30px] left-[90px]  sm:top-[-60px] sm:left-[140px] ">
+              <img
+                src="./IMG_9022-removebg-preview.png"
+                alt="my personlize image"
+                className="w-[200px] h-[67%] sm:w-[250px] sm:h-[100%]  "
+              />
+            </div>
+          </div>
+          <div className={`${styles.blob}  `}>
+            <svg viewBox="0 0 500 500" width="100%" id="blobSvg">
+              <defs>
+                <linearGradient
+                  id="mygradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style={{ stopColor: "rgb(255, 255, 255,0)" }}
+                  />
+                  <stop
+                    offset="80%"
+                    style={{ stopColor: blobBg, stopOpacity: 1 }}
+                  />
+                  <stop
+                    offset="100%"
+                    style={{ stopColor: blobBg, stopOpacity: 1 }}
+                  />
+                </linearGradient>
 
-                          </path>
+                <filter id="glow">
+                  <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="10"
+                    floodColor="#7524b7"
+                    floodOpacity="0.4"
+                  />
+                </filter>
+              </defs>
 
-                        </svg>
+              {/* blob svg  */}
 
-                        <div className="imgBox w-[400px] h-[500px] absolute top-[-60px] left-[140px] ">
-                          <img src="./IMG_9022-removebg-preview.png" alt="my personlize image" 
-                                className="w-[250px] h-[100%]  " />
-                       
-                        </div> 
-
-                  
-
-                      
-
-                     </div>
-                        <div className={`${styles.blob}  `}>
-                          <svg viewBox="0 0 500 500" width="100%" id="blobSvg"  >
-                            <defs>
-                              
-
-                                <linearGradient id="mygradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style={{ stopColor: "rgb(255, 255, 255,0)" }} />
-                                <stop offset="80%" style={{ stopColor: blobBg , stopOpacity:1 }} />
-                                <stop offset="100%" style={{ stopColor: blobBg , stopOpacity:1 }} />
-                              </linearGradient>
-
-                              <filter id="glow">
-                              <feDropShadow dx="0" dy="0" stdDeviation="10" floodColor="#7524b7" floodOpacity="0.4" />
-                            </filter>
-                        
-                            </defs>
-                                          
-                                           {/* blob svg  */}
-            
-                            <path fill="url(#mygradient)" filter="url(#glow)"  >
-                              <animate attributeName='d' dur='6s' repeatCount="indefinite" 
-                                values='M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
+              <path fill="url(#mygradient)" filter="url(#glow)">
+                <animate
+                  attributeName="d"
+                  dur="6s"
+                  repeatCount="indefinite"
+                  values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
                                 
                                 M423,320.5Q444,391,373.5,402.5Q403,414,251,411Q199,408,146.5,385.5Q94,363,77,306Q62,250,62.5,197Q115,154,152,119Q199,94,250.5,91.5Q302,89,353,113.5Q404,138,403,194Q402,250,423,320.5Z;
 
@@ -290,20 +281,15 @@ useEffect(() => {
                                     
                                 M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
 
-                                '
-                              >
+                                "
+                ></animate>
+              </path>
+            </svg>
+          </div>
+        </section>
+      </div>
 
-                              </animate>
-
-                            </path>
-
-                          </svg>                      
-                       </div>
-            </section>
-        </div>
-
-
-        {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 my-44 ">
+      {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 my-44 ">
                 <div className="bg-blue-200 p-4 rounded">Item 1</div>
                 <div className="bg-green-200 p-4 rounded">Item 2</div>
                 <div className="bg-red-200 p-4 rounded">Item 3</div>
@@ -311,15 +297,9 @@ useEffect(() => {
                 <div className="bg-purple-200 p-4 rounded">Item 5</div>
                 <div className="bg-pink-200 p-4 rounded">Item 6</div>
        </div> */}
-
-    </motion.div>
-
-  )
+    </div>
+  );
 }
-
-
- 
-
 
 // import React from 'react';
 // import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
@@ -331,7 +311,7 @@ useEffect(() => {
 //       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
 //         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 //       </div>
-      
+
 //       {/* Floating particles */}
 //       <div className="absolute inset-0">
 //         {[...Array(50)].map((_, i) => (
@@ -359,10 +339,10 @@ useEffect(() => {
 //             Full Stack Developer & UI/UX Designer
 //           </h2>
 //           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-//             Crafting beautiful, functional web experiences with modern technologies. 
+//             Crafting beautiful, functional web experiences with modern technologies.
 //             Passionate about clean code, elegant design, and solving complex problems.
 //           </p>
-          
+
 //           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
 //             <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
 //               View My Work
@@ -394,4 +374,3 @@ useEffect(() => {
 // };
 
 // export default Hero;
-

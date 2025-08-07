@@ -14,7 +14,7 @@ import { motion } from 'framer-motion'
 export default function About() {
   return (
      <motion.div 
-    className='h-screen bg-red-900 '
+    className='h-screen bg-red-900   '
       initial={{
         x:"-100vw"
       }}

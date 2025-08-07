@@ -19,6 +19,9 @@ export default {
         'bottom-left': 'bottom left',
         'bottom-right': 'bottom right',
         
+      }, 
+      screens:{
+        'xs':'480px'
       }
       
 

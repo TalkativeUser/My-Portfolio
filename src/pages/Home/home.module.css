@@ -7,7 +7,7 @@ section.parentBlob {
 }
 section .blob {
 
-    @apply absolute w-[550px] h-[500px] 
+    @apply absolute w-[400px] sm:w-[550px] h-[400px] sm:h-[500px] 
       
 }
 
