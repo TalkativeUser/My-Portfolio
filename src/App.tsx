@@ -26,7 +26,12 @@ function App() {
 
       <Navbar />
 
-    
+    <div className="sections  ">
+      <div id="home"><Home /></div>
+      <div id="about"><About /></div>
+      <div id="projects"><Projects /></div>
+      <div id="contact"><ContactUs /></div>
+    </div>
     {/* <AnimatePresence mode='wait' >
       <Routes location={location} key={location.pathname} >
         <Route path="/" element={<Layout />}>  
@@ -39,12 +44,7 @@ function App() {
     </AnimatePresence> */}
 
    
-    <div id="home"> <Home /></div>
-    <div id="about"><About/></div>
-    <div id="projects"><Projects/></div>
-    <div id="contact"><ContactUs/></div>
-   
-   
+
    
  
   </StrictMode>

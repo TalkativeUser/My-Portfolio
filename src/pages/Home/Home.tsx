@@ -85,10 +85,10 @@ export default function Home() {
     >
       <BgParticles/>
 
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 min-h-screen  ">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:min-h-screen  ">
         <section
-          className={`flex justify-center mt-28 md:mt-28 lg:mt-0  
-                                lg:justify-end xl:justify-center  p-5 
+          className={`flex justify-center mt-8 md:mt-28 lg:mt-0  
+                                lg:justify-end xl:justify-center  p-5 h-[70%] md:h-[100%]
             
             `}
         >
@@ -98,7 +98,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="h-[100%] flex flex-col justify-center  "
           >
-            <svg className={`w-[100%] h-[60px] ${styles.svgTitle}`}>
+            <svg className={`w-[100%] h-[150px] md:h-[60px] ${styles.svgTitle}`}>
               <defs>
                 <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#60a5fa" /> {/* blue-400 */}
@@ -176,7 +176,7 @@ export default function Home() {
           </motion.section>
         </section>
 
-        <section className={`${styles.parentBlob} pt-52 `}>
+        <section className={`${styles.parentBlob} pt-40  sm:pt-52 md:pt-72 lg:pt-40 pb-16 md:pb-0 `}>
           <div className={`${styles.blob} drop-shadow-[0_0_80px_#7524b799] `}>
             <svg viewBox="0 0 500 500" width="100%" id="blobSvg">
               <defs>

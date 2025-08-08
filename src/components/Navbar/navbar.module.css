@@ -47,7 +47,7 @@
 
   
 
-  @apply w-[400px] h-[70px] m-auto   rounded-[10px]  bg-transparent relative ;
+  @apply w-[400px] h-[70px] m-auto   rounded-[10px]  bg-transparent relative  [transform:rotateY(180deg)] md:[transform:rotateY(0deg)] ;
 }
 
 .navigation ul {
@@ -64,7 +64,7 @@
 }
 
 .navigation li a .icon {
-  @apply relative flex justify-center  leading-[75px] text-3xl transition-[0.5s]  ;
+  @apply relative flex justify-center  leading-[75px] text-3xl transition-[0.5s]  -rotate-90 md:rotate-0  ;
 } 
 
 .navigation  li a:global(.active) .icon {
@@ -73,7 +73,7 @@
 }
 .navigation li a .text {
 @apply absolute text-[0.75em] font-[400] tracking-[.05em] transition-[0.5s] opacity-0
-       translate-y-5
+       translate-y-5 hidden md:block
   
 }
 .navigation li a:global(.active) .text {

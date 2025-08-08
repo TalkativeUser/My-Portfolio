@@ -113,9 +113,10 @@ export default function Navbar() {
   const currentIndex = navItems.findIndex(item => item.path === location.hash);
   const tabWidth = 84; // Adjust this based on your actual tab width
   const indicatorTranslate = `${tabWidth * (currentIndex !== -1 ? currentIndex : 0)}px`;
-
+//  md:left-[50%] md:translate-x-[-50%]
   return (
-    <nav className="pt-12 pb-8 fixed left-[50%] translate-x-[-50%] z-10">
+    <nav className="pt-12 pb-8 fixed -end-36 top-[50%] translate-y-[-50%] -rotate-90 md:rotate-0 md:translate-y-0 md:top-0 md:left-[50%] md:translate-x-[-50%] z-10  
+         ">
       <div className={styles.navigation}>
         <ul>
           {navItems.map((item,index) => (
@@ -124,7 +125,7 @@ export default function Navbar() {
                 href={item.path}
                 className={`${styles.link} ${location.hash === item.path||(location.hash === ''&& index == 0) ? 'active' : ''}`}
               >
-                <span className={styles.icon}>
+                <span className={` ${styles.icon}`}>
                   {item.icon}
                 </span>
                 <span className={styles.text}>{item.label}</span>
