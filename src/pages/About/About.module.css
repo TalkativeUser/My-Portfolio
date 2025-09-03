@@ -1,0 +1,11 @@
+.about {
+    transform:rotateY(180deg)!important
+    
+}
+
+.innerAbout {
+
+    transform:rotateY(-180deg)!important;
+    text-align: center;
+
+}

@@ -81,9 +81,9 @@ export default function Home() {
 
   return (
     <div
-      className={` ${styles.homeSection} relative  pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  `}
+      className={` ${styles.homeSection} relative  pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 `}
     >
-      <BgParticles/>
+      {/* <BgParticles/> */}
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:min-h-screen  ">
         <section

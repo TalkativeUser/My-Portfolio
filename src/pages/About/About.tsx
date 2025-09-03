@@ -10,11 +10,12 @@
 
 
 import { motion } from 'framer-motion'
-
+import styles from './About.module.css'
 export default function About() {
   return (
      <motion.div 
-    className='h-screen bg-red-900   '
+    className={`h-screen bg-red-900  bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 ${styles.about}  `}
+
       initial={{
         x:"-100vw"
       }}
@@ -35,9 +36,12 @@ export default function About() {
    
       }}
     >
-      {/* clip-path: polygon(0% 0% , 100% 100% , 100% 0 , 0 100% ); */}
+     <div className={styles.innerAbout} >
 
       <h1 className="text-white text-2xl" >About</h1>
+
+     </div>
+
 
 
 
