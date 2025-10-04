@@ -1,9 +1,12 @@
-.about {
+
+
+
+.contactUsContainer {
     transform:rotateY(180deg)!important
     
 }
 
-.innerAbout {
+.innerContactUs {
 
     transform:rotateY(-180deg)!important;
 

@@ -1,7 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import styles from "./home.module.css";
 import { useEffect, useRef, useState } from "react";
-import BgParticles from "../../components/Particles/BgParticles.js";
 export default function Home() {
   const blobBg = "#7524b7";
   const words: string = `A passionate Front-end React Developer , Looking to leverage my experience as a Front End Developer into a challenging position to create innovative and responsive websites.`;

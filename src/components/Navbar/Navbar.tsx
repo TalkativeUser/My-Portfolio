@@ -1,106 +1,36 @@
 
-// import { FaHome } from "react-icons/fa";
-// import { FaInfoCircle } from "react-icons/fa";
-// import { IoIosContact } from "react-icons/io";
-// import { TbDeviceAnalytics } from "react-icons/tb";
-// import styles from './navbar.module.css'
-// import { Link ,useLocation} from "react-router-dom";
-// let prevLinkItem:HTMLAnchorElement|null=null;
-
-// export default function Navbar() {
-
-//    const location = useLocation();
-
-//     const indicatorTranslate =
-//     location.pathname === '/' ? '0px' :
-//     location.pathname === '/about' ? '84px' :
-//     location.pathname === '/projects' ? '167px' :
-//     location.pathname === '/contact' ? '250px' :
-//     '0px'; // fallback value
-//     //   نخش بقا على المشكله بتاعة النص ال  svg  وعلى الاسكرول اللى بيحصل بسبب ال  blob svg
-
-//   const addActiveClass = (event: React.MouseEvent<HTMLAnchorElement>) => {
-//   if (prevLinkItem) {
-//     prevLinkItem.classList.remove('active');
-//   }
-
-//   event.currentTarget.classList.add('active');
-//   prevLinkItem = event.currentTarget; // خزن العنصر نفسه، مش الـ event
-// };
-
-
-
-//   return (
-//     <>
-//      <nav className=" pt-12 pb-8  fixed left-[50%] translate-x-[-50%] z-10 " >
-//         <div className={`${styles.navigation}  `} 
-// >
-//             <ul >
-
-//                 <li >
-//                     <Link  to="/"  className="home" onClick={(e)=>{ addActiveClass(e) }} >
-//                         <span className={styles.icon} style={{zIndex:5555}}  > <FaHome /> </span>
-//                         <span className={styles.text} >Home</span>
-//                     </Link>
-
-//                 </li>
-
-//                 <li>
-//                     <Link to="/about" className="about" onClick={(e)=>{ addActiveClass(e) }} >
-//                         <span className={styles.icon} > <FaInfoCircle/> </span>
-//                         <span className={styles.text} >About</span>
-//                     </Link>
-
-//                 </li>
-
-//                 <li>
-//                     <Link to="/projects" className="project" onClick={(e)=>{ addActiveClass(e) }} >
-//                         <span className={styles.icon} ><TbDeviceAnalytics /></span>
-//                         <span className={styles.text} >Projects</span>
-//                     </Link>
-
-//                 </li>
-
-//                 <li>
-//                     <Link to="/contact" className="contact" onClick={(e)=>{ addActiveClass(e) }} >
-//                         <span  className={styles.icon} ><IoIosContact /></span>
-//                         <span className={styles.text} >ContactUs</span>
-//                     </Link>
-
-//                 </li>
-
-//             <div className={`${styles.indicator}   `} style={{transform : ` translateX(${indicatorTranslate}) `}}></div>
-            
-
-//             </ul>
-//                  <div className="halfCircle absolute inset-0  bg-white/40 backdrop-blur-lg  rounded-[10px] transition-all duration-200  "
-//                 //  we answered the navbar problem , indicator problem become coreccted with masks image 
-//                style={{
-//                     maskImage: `radial-gradient(circle at calc(${indicatorTranslate} + 75px) top, transparent 37px, black 38px)`,
-//                     maskRepeat: 'no-repeat',
-//                     maskSize: '100% 100%',
-//                     }}
-
-                 
-//                  ></div>
-
-//         </div>
-//     </nav>
-//     </>
-   
-    
-//   )
-// }
-
 import { FaHome, FaInfoCircle } from "react-icons/fa";
 import { IoIosContact } from "react-icons/io";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import styles from './navbar.module.css';
 import {  useLocation } from "react-router-dom";
+import { useState } from "react";
+import type { Variants } from "framer-motion";
 
 export default function Navbar() {
+  
+  const [toggleMenu,setToggleMenu]=useState<boolean>()
   const location = useLocation()
-  console.log('path name => ' , location.hash);
+  const toggleVariant: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      x: -30,
+      // rotateY: 360,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      // rotateY: 10,
+
+      transition: {
+        type: "spring" as const,
+        stiffness: 50,
+        duration:0.5
+      },
+    },
+  };
   
 
   const navItems = [
@@ -114,9 +44,12 @@ export default function Navbar() {
   const tabWidth = 84; // Adjust this based on your actual tab width
   const indicatorTranslate = `${tabWidth * (currentIndex !== -1 ? currentIndex : 0)}px`;
 //  md:left-[50%] md:translate-x-[-50%]
-  return (
-    <nav className="pt-12 pb-8 fixed -end-36 top-[50%] translate-y-[-50%] -rotate-90 md:rotate-0 md:translate-y-0 md:top-0 md:left-[50%] md:translate-x-[-50%] z-10  
-         ">
+  return ( <nav>
+
+ 
+    <div className={`pt-12 pb-8 fixed -end-36 top-[50%] -rotate-90 md:rotate-0  md:translate-y-0 
+            md:top-0 md:left-[50%] md:translate-x-[-50%] z-10  transition-translate duration-500
+          ${toggleMenu ? "translate-x-[120px] translate-y-[80%] " : "translate-x-0 translate-y-[-50%] "  } ` }>
       <div className={styles.navigation}>
         <ul>
           {navItems.map((item,index) => (
@@ -145,7 +78,7 @@ export default function Navbar() {
                       </svg> 
 
         <div
-          className="halfCircle absolute inset-0 bg-white/40 backdrop-blur-lg rounded-[10px] transition-clip-path duration-700"
+          className="halfCircle absolute inset-0 bg-white/30 backdrop-blur-sm rounded-[10px] transition-clip-path duration-700"
          
         //   لازم نخلى الكيرفى ديناميك بقا
           style={{
@@ -154,6 +87,14 @@ export default function Navbar() {
           }}
         ></div>
       </div>
+
+     
+
+    </div>
+
+
+      <ToggleMenu toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
+
     </nav>
   );
 }
@@ -161,3 +102,27 @@ export default function Navbar() {
 //   maskImage: `radial-gradient(circle at calc(${indicatorTranslate} + 75px) top, transparent 37px, black 38px)`,
 //             maskRepeat: 'no-repeat',
 //             maskSize: '100% 100%',
+
+const ToggleMenu=({toggleMenu , setToggleMenu}:{toggleMenu , setToggleMenu } )=>{
+
+
+ 
+
+
+  return <div className="toggleMenu fixed top-4 right-3 z-10 md:hidden">
+
+      {
+        toggleMenu ?  <div className=" openMenu" onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
+        <span className="text-white border p-1 rounded rounded-1 bg-green-600 " >
+         OM
+        </span>
+     </div> : <div className="closeMenu "  onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
+         <span className="text-white border p-1 rounded rounded-1 bg-red-600 " >
+          CM
+         </span>
+      </div>
+      }
+   
+   
+  </div>
+}
