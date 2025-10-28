@@ -20,7 +20,7 @@ export default function TiltCard() {
             >
                <div className={styles.imgBx} >
              <img
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHOCzaEM17rj4LhXRx3nOezr76b-3BZ_WN_A&s"
+                 src="projectsImage/jecard/img1.png"
                  alt="project image"
            
                />

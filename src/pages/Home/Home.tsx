@@ -64,19 +64,19 @@ export default function Home() {
     },
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFlipState("out");
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setFlipState("out");
 
-      setTimeout(() => {
-        // نغير النص وهو مختفي
-        setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
-        setFlipState("in");
-      }, 600); // نفس مدة الدوران في flipVariants
-    }, 3000);
+  //     setTimeout(() => {
+  //       // نغير النص وهو مختفي
+  //       setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
+  //       setFlipState("in");
+  //     }, 600); // نفس مدة الدوران في flipVariants
+  //   }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div
@@ -198,7 +198,7 @@ export default function Home() {
 
               <path fill="url(#gradient)">
                 <animate
-                  attributeName="d"
+                  // attributeName="d"
                   dur="6s"
                   repeatCount="indefinite"
                   values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
@@ -265,7 +265,7 @@ export default function Home() {
 
               <path fill="url(#mygradient)" filter="url(#glow)">
                 <animate
-                  attributeName="d"
+                  // attributeName="d"
                   dur="6s"
                   repeatCount="indefinite"
                   values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
@@ -288,88 +288,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 my-44 ">
-                <div className="bg-blue-200 p-4 rounded">Item 1</div>
-                <div className="bg-green-200 p-4 rounded">Item 2</div>
-                <div className="bg-red-200 p-4 rounded">Item 3</div>
-                <div className="bg-yellow-200 p-4 rounded">Item 4</div>
-                <div className="bg-purple-200 p-4 rounded">Item 5</div>
-                <div className="bg-pink-200 p-4 rounded">Item 6</div>
-       </div> */}
+
     </div>
   );
 }
-
-// import React from 'react';
-// import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
-
-// const Hero = () => {
-//   return (
-//     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-//       {/* Animated background gradient */}
-//       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-//         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-//       </div>
-
-//       {/* Floating particles */}
-//       <div className="absolute inset-0">
-//         {[...Array(50)].map((_, i) => (
-//           <div
-//             key={i}
-//             className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
-//             style={{
-//               left: `${Math.random() * 100}%`,
-//               top: `${Math.random() * 100}%`,
-//               animationDelay: `${Math.random() * 3}s`,
-//               animationDuration: `${2 + Math.random() * 3}s`
-//             }}
-//           />
-//         ))}
-//       </div>
-
-//       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-//         <div className="animate-fade-in-up">
-//           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-//             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-//               Alex Johnson
-//             </span>
-//           </h1>
-//           <h2 className="text-xl md:text-2xl text-gray-300 mb-8 font-light">
-//             Full Stack Developer & UI/UX Designer
-//           </h2>
-//           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-//             Crafting beautiful, functional web experiences with modern technologies.
-//             Passionate about clean code, elegant design, and solving complex problems.
-//           </p>
-
-//           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-//             <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-//               View My Work
-//             </button>
-//             <button className="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300">
-//               Download Resume
-//             </button>
-//           </div>
-
-//           <div className="flex justify-center space-x-6">
-//             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
-//               <Github size={24} />
-//             </a>
-//             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
-//               <Linkedin size={24} />
-//             </a>
-//             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
-//               <Mail size={24} />
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-//         <ArrowDown className="text-gray-400" size={24} />
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Hero;

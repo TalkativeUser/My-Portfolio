@@ -3,14 +3,15 @@ import { FaHome, FaInfoCircle } from "react-icons/fa";
 import { IoIosContact } from "react-icons/io";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import styles from './navbar.module.css';
-import {  useLocation } from "react-router-dom";
-import { useState } from "react";
+import {  Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import type { Variants } from "framer-motion";
 
 export default function Navbar() {
   
-  const [toggleMenu,setToggleMenu]=useState<boolean>()
+  const [toggleMenu,setToggleMenu]=useState(false)
   const location = useLocation()
+   const [currentIndex, setCurrentIndex] = useState(0); 
   const toggleVariant: Variants = {
     hidden: {
       opacity: 0,
@@ -32,18 +33,32 @@ export default function Navbar() {
     },
   };
   
+  
 
   const navItems = [
-    { path: "#home", label: "Home", icon: <FaHome /> },
-    { path: "#about", label: "About", icon: <FaInfoCircle /> },
-    { path: "#projects", label: "Projects", icon: <TbDeviceAnalytics /> },
-    { path: "#contact", label: "ContactUs", icon: <IoIosContact /> },
+    { path: "/home", label: "Home", icon: <FaHome /> },
+    { path: "/about", label: "About", icon: <FaInfoCircle /> },
+    { path: "/projects", label: "Projects", icon: <TbDeviceAnalytics /> },
+    { path: "/contact", label: "ContactUs", icon: <IoIosContact /> },
   ];
+1
 
-  const currentIndex = navItems.findIndex(item => item.path === location.hash);
-  const tabWidth = 84; // Adjust this based on your actual tab width
-  const indicatorTranslate = `${tabWidth * (currentIndex !== -1 ? currentIndex : 0)}px`;
-//  md:left-[50%] md:translate-x-[-50%]
+
+
+
+  useEffect(() => {
+    const index = navItems.findIndex((item) =>
+      location.pathname.startsWith(item.path)
+    );
+
+    if (index !== -1) setCurrentIndex(index);
+  }, [location.pathname]);
+
+  const tabWidth = 84;
+  const indicatorTranslate = `${tabWidth * currentIndex}px`;
+
+
+
   return ( <nav>
 
  
@@ -54,15 +69,15 @@ export default function Navbar() {
         <ul>
           {navItems.map((item,index) => (
             <li key={item.path}>
-              <a
-                href={item.path}
-                className={`${styles.link} ${location.hash === item.path||(location.hash === ''&& index == 0) ? 'active' : ''}`}
+              <Link
+                to={item.path}
+                className={`${styles.link} ${location.pathname.startsWith(item.path)||(location.pathname === '/'&& index == 0) ? 'active' : ''}`}
               >
                 <span className={` ${styles.icon}`}>
                   {item.icon}
                 </span>
                 <span className={styles.text}>{item.label}</span>
-              </a>
+              </Link>
             </li>
           ))}
 
@@ -83,7 +98,7 @@ export default function Navbar() {
         //   لازم نخلى الكيرفى ديناميك بقا
           style={{
                clipPath:
-               `path('M 0 0 H 400 V 70  H 0 Z M ${location.hash == "#home"?"38":location.hash == "#about"?"122":location.hash == "#projects"?"205":location.hash == "#contact"?"289":"38" } 0 A 20 20 0 1 0 ${location.hash == "#home"?"114":location.hash == "#about"?"198":location.hash == "#projects"?"281":location.hash == "#contact"?"365":"114" }  0  Z')`
+               `path('M 0 0 H 400 V 70  H 0 Z M ${location.pathname == "/home" || location.pathname === "/" ?"38":location.pathname == "/about"?"122":location.pathname == "/projects"?"205":location.pathname == "/contact"?"289":"" } 0 A 20 20 0 1 0 ${location.pathname == "/home" || location.pathname==='/'?"114":location.pathname == "/about"?"198":location.pathname == "/projects"?"281":location.pathname == "/contact"?"365":"" }  0  Z')`
           }}
         ></div>
       </div>
@@ -103,7 +118,7 @@ export default function Navbar() {
 //             maskRepeat: 'no-repeat',
 //             maskSize: '100% 100%',
 
-const ToggleMenu=({toggleMenu , setToggleMenu}:{toggleMenu , setToggleMenu } )=>{
+const ToggleMenu=({toggleMenu , setToggleMenu}:{toggleMenu:boolean , setToggleMenu:React.Dispatch<React.SetStateAction<boolean >> } )=>{
 
 
  

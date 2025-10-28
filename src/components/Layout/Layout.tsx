@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import Navbar from '../Navbar/Navbar'
 
 export default function Layout() {
   return (
@@ -7,6 +8,7 @@ export default function Layout() {
          لى بقا المكونات التانيه بتحتاج  outlet  بكل بساطه عشان هما  cheildren  لل  layout  لكن هما لو على نفس مستوى ال  layout  مش هنحتتاج ال  outlet 
          وبعدين تعريف ال  outlet  هو او هى اللى بتبص على اى  children <Route> <Route/> component  وبتبتدى تعرضه مطرح ما بحط ال  outlet بكل بساطه لو عاوز تعرف الفرق شيل ال  outlet  وخلى 
          ال routes  اللى داخل ال layout  على نفس مستواها */}
+         <Navbar />
          <Outlet/>
       
     </div>
