@@ -20,11 +20,11 @@ section .blob {
 
 
 
-/* @keyframes titleAnimation {
+ @keyframes titleAnimation {
 
     100% {
         stroke-dashoffset: 160;
     }
     
-} */
+}
 

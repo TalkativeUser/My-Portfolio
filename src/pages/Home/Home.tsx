@@ -64,19 +64,19 @@ export default function Home() {
     },
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setFlipState("out");
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFlipState("out");
 
-  //     setTimeout(() => {
-  //       // نغير النص وهو مختفي
-  //       setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
-  //       setFlipState("in");
-  //     }, 600); // نفس مدة الدوران في flipVariants
-  //   }, 3000);
+      setTimeout(() => {
+        // نغير النص وهو مختفي
+        setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
+        setFlipState("in");
+      }, 600); // نفس مدة الدوران في flipVariants
+    }, 3000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div
@@ -198,7 +198,7 @@ export default function Home() {
 
               <path fill="url(#gradient)">
                 <animate
-                  // attributeName="d"
+                  attributeName="d"
                   dur="6s"
                   repeatCount="indefinite"
                   values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
@@ -265,7 +265,7 @@ export default function Home() {
 
               <path fill="url(#mygradient)" filter="url(#glow)">
                 <animate
-                  // attributeName="d"
+                  attributeName="d"
                   dur="6s"
                   repeatCount="indefinite"
                   values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
