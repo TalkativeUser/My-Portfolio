@@ -6,6 +6,8 @@ import styles from './navbar.module.css';
 import {  Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { Variants } from "framer-motion";
+import { CiMenuFries } from "react-icons/ci";
+import { RiCloseLargeLine } from "react-icons/ri";
 
 export default function Navbar() {
   
@@ -126,13 +128,12 @@ const ToggleMenu=({toggleMenu , setToggleMenu}:{toggleMenu:boolean , setToggleMe
 
       {
         toggleMenu ?  <div className=" openMenu" onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
-        <span className="text-white border p-1 rounded rounded-1 bg-green-600 " >
-         OM
-        </span>
+        <CiMenuFries color="white" size={'20px'}  />
+      
      </div> : <div className="closeMenu "  onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
-         <span className="text-white border p-1 rounded rounded-1 bg-red-600 " >
-          CM
-         </span>
+      
+          <RiCloseLargeLine  className=" text-[#e766ad] font-bold text-2xl " />
+       
       </div>
       }
    

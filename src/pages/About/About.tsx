@@ -7,34 +7,12 @@ import LearningTimeline from "../../components/ui/timeLine";
 
 
 export default function About() {
-  const skills = [
-    "React.js", "TypeScript", "JavaScript", "HTML5", "CSS3", 
-    "Tailwind CSS", "Redux", "Git", "Responsive Design", "RESTful APIs"
-  ];
 
-  // داتا تجريبية للخبرات
-  const experiences = [
-    {
-      role: "Frontend Developer",
-      company: "Innovatech Solutions",
-      period: "2023 - Present",
-      description: "Developing modern and scalable web applications with React and TypeScript, collaborating with UI/UX designers and backend teams to deliver high-quality user experiences."
-    },
-    {
-      role: "Junior Frontend Developer",
-      company: "Creative Labs",
-      period: "2021 - 2023",
-      description: "Built responsive websites and contributed to client projects using React and Tailwind CSS, focusing on performance optimization and accessibility."
-    },
-    {
-      role: "Web Development Intern",
-      company: "NextGen Software",
-      period: "2020 - 2021",
-      description: "Assisted in front-end development tasks, worked with REST APIs, and learned best practices in coding standards and version control."
-    }
-  ];
-
-
+    // width: 4px;
+    // position: absolute;
+    // left: 20px;
+    // inset-block: 0;
+    // background: red;
 
   return (
     <motion.div 
@@ -45,13 +23,14 @@ export default function About() {
       transition={{ duration: 0.5 }}
     >
       <div className={`max-w-8xl mx-auto relative z-10`}>
-        <div className="relative mt-10 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-4 w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
+        <div className="relative mt-10 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-8 w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
           <TextEffect3D text={'About me'} />
         </div>
 
         {/* About Me and skills Section */}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center  " >
+{/* after:content-[''] after:block after:h-0.5 after:absolute after:left-10 after:right-10 after:-bottom-10 after:bg-[#e78dbe] */}
+        <div className="  grid grid-cols-1 lg:grid-cols-2 items-center relative py-12 " >
             {/*  About me section */}
               <div className="">
                 <motion.div 
@@ -81,6 +60,7 @@ export default function About() {
         </div>
      
 
+        {/* skills section */}
       {/* <section className="mb-16">
             <motion.h2 
               className="text-3xl md:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"
@@ -106,37 +86,6 @@ export default function About() {
             </div>
       </section> */}
 
-        {/* Experience Section */}
-        <section>
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold my-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"
-            initial={{ y: -30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          >
-            Experience
-          </motion.h2>
-          
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <motion.div 
-                key={index}
-                className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-purple-900/30 hover:border-purple-500/50 transition-all duration-300"
-                initial={{ x: -50, opacity: 0, scale: 0.95 }}
-                animate={{ x: 0, opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 + index * 0.15, duration: 0.6, ease: "easeOut" }}
-                whileHover={{ scale: 1.03, boxShadow: "0 0 15px rgba(168,85,247,0.6)" }}
-              >
-                <h3 className="text-xl md:text-2xl font-semibold text-purple-300 mb-1">{exp.role}</h3>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
-                  <p className="text-purple-100">{exp.company}</p>
-                  <span className="text-sm text-purple-400">{exp.period}</span>
-                </div>
-                <p className="text-gray-300">{exp.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
 
 
 <LearningTimeline />

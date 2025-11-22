@@ -34,9 +34,7 @@ export default function Projects() {
         variants={textVariant(0.2)}
         className="text-center mb-16"
       >
-        {/* <motion.h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
-          My Projects
-        </motion.h2> */}
+
 
 <div className="relative mt-10 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-4 w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
           <TextEffect3D  text={'Projects'} />
