@@ -1,6 +1,7 @@
 import { motion, type Variants } from "framer-motion";
 import styles from "./home.module.css";
 import { useEffect, useRef, useState } from "react";
+import Squares from "../../components/ui/squers";
 export default function Home() {
   const blobBg = "#7524b7";
   const words: string = `A passionate Front-end React Developer , Looking to leverage my experience as a Front End Developer into a challenging position to create innovative and responsive websites.`;
@@ -80,11 +81,19 @@ export default function Home() {
 
   return (
     <div
-      className={` ${styles.homeSection} relative  pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 `}
+      className={` ${styles.homeSection} relative overflow-hidden pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 `}
     >
-      {/* <BgParticles/> */}
-
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:min-h-screen  ">
+{/* الخلفية */}
+  <div className="absolute inset-0 z-0">
+    <Squares 
+      speed={0}
+      squareSize={50}
+      direction="diagonal"
+      borderColor="rgba(147, 51, 234, 0.3)" 
+      hoverFillColor="#a855f7"
+    />
+  </div>
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:min-h-screen relative z-10 ">
         <section
           className={`flex justify-center mt-8 md:mt-28 lg:mt-0  
                                 lg:justify-end xl:justify-center  p-5 h-[70%] md:h-[100%]

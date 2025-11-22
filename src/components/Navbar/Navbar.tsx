@@ -41,7 +41,7 @@ export default function Navbar() {
     { path: "/projects", label: "Projects", icon: <TbDeviceAnalytics /> },
     { path: "/contact", label: "ContactUs", icon: <IoIosContact /> },
   ];
-1
+
 
 
 
@@ -63,7 +63,7 @@ export default function Navbar() {
 
  
     <div className={`pt-12 pb-8 fixed -end-36 top-[50%] -rotate-90 md:rotate-0  md:translate-y-0 
-            md:top-0 md:left-[50%] md:translate-x-[-50%] z-10  transition-translate duration-500
+            md:top-0 md:left-[50%] md:translate-x-[-50%] z-50  transition-translate duration-500
           ${toggleMenu ? "translate-x-[120px] translate-y-[80%] " : "translate-x-0 translate-y-[-50%] "  } ` }>
       <div className={styles.navigation}>
         <ul>
@@ -88,9 +88,7 @@ export default function Navbar() {
             style={{ transform: `translateX(${indicatorTranslate})` }}
           ></div>
         </ul>
-                    <svg>
-                      
-                      </svg> 
+                 
 
         <div
           className="halfCircle absolute inset-0 bg-white/30 backdrop-blur-sm rounded-[10px] transition-clip-path duration-700"

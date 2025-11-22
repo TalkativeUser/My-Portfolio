@@ -1,10 +1,28 @@
-.about {
-    transform:rotateY(180deg)!important
-    
+.skillsWrapper {
+  overflow: hidden;
+  width: 100%;
 }
 
-.innerAbout {
+.skillsSlider {
+  display: flex;
+  width: max-content;
+  animation: snakeMove 8s linear infinite;
+}
 
-    transform:rotateY(-180deg)!important;
-
+@keyframes snakeMove {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-12.5%) translateY(-10px);
+  }
+  50% {
+    transform: translateX(-25%) translateY(0);
+  }
+  75% {
+    transform: translateX(-37.5%) translateY(10px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
 }

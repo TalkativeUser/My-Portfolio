@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+       body {
+
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.textEffect-3d{ 
+    position: absolute;
+   top: 50%;
+   left: 50%;
+   transform:perspective(1000px) translate(-50% ,-50%) skewY(15deg) ;
+   transition: 0.5s;
+}
+
+.textEffect-3d:hover{ 
+    transform:perspective(1000px) translate(-50% ,-50%) skewY(0deg) ;
+}
+
+.textEffect-3d h1 span {
+position: absolute;
+top:0;
+left: 0;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 3em;
+  color: #fff;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+.textEffect-3d h1 span:nth-child(1) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}  
+
+/* نضغط *2000# ثم طريقة المحاسبه بعد انتهاء الباقة ثم نختار متجددة */
+
+.textEffect-3d h1 span:nth-child(2) {
+  color: red;
+  transform: translate(-50%, -50%) skewX(-60deg);
+  left: -11px;
+    -webkit-clip-path: polygon(0 43%, 100% 43%, 100% 57%, 0 57%);
+  clip-path: polygon(0 43%, 100% 43%, 100% 57%, 0 57%);
+}
+
+.textEffect-3d h1 span:nth-child(3) {
+  transform: translate(-50%, -50%) skewX(0deg);
+  left: -23px;
+  -webkit-clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  clip-path:polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+.textEffect-3d:hover h1 span:nth-child(2) , .textEffect-3d:hover h1 span:nth-child(3) {
+
+transform:translate(-50% , -50%) skewX(0deg);
+left:0;
+color: #fff;
+}
+
+    </style>
+</head>
+<body><div class="textEffect-3d">
+    <h1 >
+        <span >AboutMe </span>
+        <span >AboutMe </span>
+        <span >AboutMe </span>
+    </h1>
+</div>
+    
+</body>
+</html>

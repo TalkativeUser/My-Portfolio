@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import styles from './contactUs.module.css';
+import Squares from "../../components/ui/squers";
+import TextEffect3D from "../../components/TextEffect3D/textEffect3d";
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
@@ -37,21 +39,18 @@ export default function ContactUs() {
 
   return (
     <motion.div 
-      className={`min-h-screen pt-36 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white px-6 md:px-12 lg:px-24 xl:px-32 pb-20 ${styles.contactUsContainer}`}
+      className={`min-h-screen pt-36 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white px-6 md:px-12 lg:px-24 xl:px-32 pb-20 `}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className={`max-w-6xl mx-auto ${styles.innerContactUs}`}>
-        <motion.h1 
-          className="text-4xl md:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Get In Touch
-        </motion.h1>
+      <div className={`max-w-6xl mx-auto relative z-10 `}>
+     
+          <div className="relative mt-10 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-4 w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
+                    <TextEffect3D  text={'Contact'} />
+                  </div>
+        
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
@@ -141,7 +140,7 @@ export default function ContactUs() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="space-y-8"
           >
-            <div className="bg-white/10 backdrop-blur-sm backdrop-blur-sm p-8 rounded-xl border border-purple-900/30 h-full">
+            <div className="bg-white/10 backdrop-blur-sm  p-8 rounded-xl border border-purple-900/30 h-full">
               <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
                 Contact Information
               </h2>
@@ -174,7 +173,17 @@ export default function ContactUs() {
             </div>
           </motion.div>
         </div>
+     
       </div>
+       <div className="absolute inset-0 z-0">
+    <Squares 
+      speed={0}
+      squareSize={50}
+      direction="diagonal"
+      borderColor="rgba(147, 51, 234, 0.3)" 
+      hoverFillColor="#a855f7"
+    />
+  </div>
     </motion.div>
   );
 }
