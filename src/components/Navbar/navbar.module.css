@@ -68,7 +68,7 @@
 } 
 
 .navigation  li a:global(.active) .icon {
-@apply -translate-y-[35px]
+@apply -translate-y-[35px] text-white
   
 }
 .navigation li a .text {
@@ -77,7 +77,7 @@
   
 }
 .navigation li a:global(.active) .text {
-@apply  opacity-100 translate-y-[10px]
+@apply  opacity-100 translate-y-[10px] 
   
 }
 

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import styles from "./About.module.css";
 import Squares from "../../components/ui/squers";
 import TextEffect3D from "../../components/TextEffect3D/textEffect3d";
-import IconCloudDemo from "../../components/ui/icloudDemo";
+import IconCloudDemo, { skills } from "../../components/ui/icloudDemo";
 import LearningTimeline from "../../components/ui/timeLine";
 
 
@@ -16,14 +16,14 @@ export default function About() {
 
   return (
     <motion.div 
-      className={`min-h-screen pt-24 text-center relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white px-6 md:px-12 lg:px-24 xl:px-32 ${styles.about}`}
+      className={`min-h-screen pt-10  md:pt-36 text-center relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white px-6 md:px-12 lg:px-24 xl:px-32 ${styles.about}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className={`max-w-8xl mx-auto relative z-10`}>
-        <div className="relative mt-10 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-8 w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
+        <div className="relative w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
           <TextEffect3D text={'About me'} />
         </div>
 
@@ -53,38 +53,30 @@ export default function About() {
               </div>
 
               {/* Skills Section */}
-                  <div className="relative z-50   ">
+                  {/* <div className="relative z-50   ">
             
                               <IconCloudDemo />
-                  </div>
+                              <section className="mb-16">
+                                  <div className={styles.skillsWrapper}>
+                                    <div className={styles.skillsSlider}>
+                                      {skills.map((skill, index) => (
+                                        <span 
+                                          key={index}
+                                          className="flex-shrink-0 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-purple-200 text-sm md:text-base hover:bg-purple-800/70 transition-colors duration-300 select-none mx-2"
+                                          style={{ minWidth: "130px", textAlign: "center" }}
+                                        >
+                                          {skill}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  </div>
+                        </section>
+                  </div> */}
         </div>
      
 
-        {/* skills section */}
-      {/* <section className="mb-16">
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300"
-              initial={{ y: -30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
-              Skills
-            </motion.h2>
 
-            <div className={styles.skillsWrapper}>
-              <div className={styles.skillsSlider}>
-                {[...skills, ...skills].map((skill, index) => (
-                  <span 
-                    key={index}
-                    className="flex-shrink-0 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-purple-200 text-sm md:text-base hover:bg-purple-800/70 transition-colors duration-300 select-none mx-2"
-                    style={{ minWidth: "130px", textAlign: "center" }}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-      </section> */}
+
 
 
 

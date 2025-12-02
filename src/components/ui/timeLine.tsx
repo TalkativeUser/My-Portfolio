@@ -42,7 +42,7 @@ const timeline = [
 
 export default function AnimatedTimeline() {
   return (
-    <div className="w-full max-w-5xl mx-auto py-20">
+    <div className="w-full max-w-5xl mx-auto  pb-20 lg:pt-20 overflow-hidden">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function AnimatedTimeline() {
           className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-pink-400 shadow-[0_0_20px_#e879f9]"
         />
 
-        <div className="space-y-20">
+        <div className="space-y-20  ">
           {timeline.map((item, index) => (
             <motion.div
               key={index}
@@ -73,19 +73,19 @@ export default function AnimatedTimeline() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              {/* Node */}
+                       {/* Node */}
               <motion.div
-                className="absolute left-1/2 -translate-x-1/2 rounded-full z-10"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.4 }}
-              >
+                  className="absolute left-1/2 rounded-full z-10"
+                  initial={{ scale: 0, x: "-50%" }}
+                  whileInView={{ scale: 1, x: "-50%" }}
+                  transition={{ duration: 0.4 }}
+                >
+
                 <div className="w-6 h-6 rounded-full bg-pink-200 border-2 border-pink-400 flex items-center justify-center shadow-[0_0_12px_#e879f9]">
                   <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
                 </div>
               </motion.div>
 
-              {/* Card */}
               <motion.div
                 className="md:w-[46%] w-full bg-[#ffffff0f] border border-pink-300/40 backdrop-blur-xl rounded-xl p-6 shadow-lg md:px-12 md:mx-6"
                 whileHover={{ scale: 1.02, boxShadow: "0 0 25px #e879f9" }}

@@ -15,7 +15,7 @@ export default function Projects() {
   initial="hidden"
   whileInView="show"
   viewport={{ once: true, amount: 0.25 }}
-  className="relative min-h-screen pt-36 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 pb-20 overflow-hidden"
+  className="relative min-h-screen pt-10 md:pt-36 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 pb-20 overflow-hidden"
 >
   <div className="absolute inset-0 z-0">
     <Squares 
@@ -36,7 +36,7 @@ export default function Projects() {
       >
 
 
-<div className="relative mt-10 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-4 w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
+<div className="relative w-full h-24 sm:h-16 md:h-32 lg:h-36 xl:h-38 ">
           <TextEffect3D  text={'Projects'} />
         </div>
 

@@ -65,7 +65,7 @@ export default function Navbar() {
 
  
     <div className={`pt-12 pb-8 fixed -end-36 top-[50%] -rotate-90 md:rotate-0  md:translate-y-0 
-            md:top-0 md:left-[50%] md:translate-x-[-50%] z-50  transition-translate duration-500
+            md:top-0 md:left-[50%] md:translate-x-[-50%] z-[999999]  transition-translate duration-500
           ${toggleMenu ? "translate-x-[120px] translate-y-[80%] " : "translate-x-0 translate-y-[-50%] "  } ` }>
       <div className={styles.navigation}>
         <ul>
@@ -124,17 +124,17 @@ const ToggleMenu=({toggleMenu , setToggleMenu}:{toggleMenu:boolean , setToggleMe
  
 
 
-  return <div className="toggleMenu fixed top-4 right-3 z-10 md:hidden">
+  return <div className="toggleMenu fixed z-[999999] top-4 right-3 md:hidden cursor-pointer ">
 
       {
-        toggleMenu ?  <div className=" openMenu" onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
-        <CiMenuFries color="white" size={'20px'}  />
+        toggleMenu ?  <span className="openMenu text-4xl " onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
+        <CiMenuFries color="white"   />
       
-     </div> : <div className="closeMenu "  onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
+     </span> : <span className="closeMenu text-4xl "  onClick={()=>{  setToggleMenu( prev=>!prev ) } } >
       
-          <RiCloseLargeLine  className=" text-[#e766ad] font-bold text-2xl " />
+          <RiCloseLargeLine  className=" text-[#e766ad] " />
        
-      </div>
+      </span>
       }
    
    

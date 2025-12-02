@@ -1,12 +1,13 @@
 .skillsWrapper {
   overflow: hidden;
+  padding-block: 30px;
   width: 100%;
 }
 
 .skillsSlider {
   display: flex;
   width: max-content;
-  animation: snakeMove 8s linear infinite;
+  animation: snakeMove 18s linear infinite;
 }
 
 @keyframes snakeMove {

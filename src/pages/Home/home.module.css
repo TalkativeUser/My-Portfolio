@@ -11,7 +11,7 @@ section .blob {
       
 }
 
-.svgTitle {
+/* .svgTitle {
 
     animation: titleAnimation 1s linear infinite;
 }
@@ -26,5 +26,5 @@ section .blob {
         stroke-dashoffset: 160;
     }
     
-}
+} */
 

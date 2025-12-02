@@ -20,7 +20,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
   const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content;
 
   return (
-    <div className="w-full px-4 my-10">
+    <div className="w-full sm:px-4 my-10">
       <div className="w-full max-w-4xl  ">
         {/* Tab Headers */}
         <div className=" flex ">
@@ -29,7 +29,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`
-                relative px-5 py-2 font-semibold text-sm ${idx==0 ? "rounded-tl-xl " : idx== 2 ?"rounded-tr-xl ":""}
+                relative px-2 sm:px-5 py-2 font-semibold text-sm ${idx==0 ? "rounded-tl-xl " : idx== 2 ?"rounded-tr-xl ":""}
                 transition
                 ${
                   activeTab === tab.id

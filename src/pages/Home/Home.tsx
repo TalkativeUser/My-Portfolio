@@ -2,6 +2,7 @@ import { motion, type Variants } from "framer-motion";
 import styles from "./home.module.css";
 import { useEffect, useRef, useState } from "react";
 import Squares from "../../components/ui/squers";
+import { Link } from "react-router-dom";
 export default function Home() {
   const blobBg = "#7524b7";
   const words: string = `A passionate Front-end React Developer , Looking to leverage my experience as a Front End Developer into a challenging position to create innovative and responsive websites.`;
@@ -65,23 +66,23 @@ export default function Home() {
     },
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFlipState("out");
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setFlipState("out");
 
-      setTimeout(() => {
-        // نغير النص وهو مختفي
-        setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
-        setFlipState("in");
-      }, 600); // نفس مدة الدوران في flipVariants
-    }, 3000);
+  //     setTimeout(() => {
+  //       // نغير النص وهو مختفي
+  //       setText((prev) => (prev === "Next.js" ? "React.js" : "Next.js"));
+  //       setFlipState("in");
+  //     }, 600); // نفس مدة الدوران في flipVariants
+  //   }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div
-      className={` ${styles.homeSection} relative overflow-hidden pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 `}
+      className={` ${styles.homeSection} min-h-screen flex justify-center items-center  relative overflow-hidden pb-44 sm:pb-56 lg:pb-36 lg:pt-12 xl:py-0  bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 `}
     >
 {/* الخلفية */}
   <div className="absolute inset-0 z-0">
@@ -93,10 +94,10 @@ export default function Home() {
       hoverFillColor="#a855f7"
     />
   </div>
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:min-h-screen relative z-10 ">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 relative z-10 ">
         <section
           className={`flex justify-center mt-8 md:mt-28 lg:mt-0  
-                                lg:justify-end xl:justify-center  p-5 h-[70%] md:h-[100%]
+                                lg:justify-end xl:justify-center  p-5 ps-12 h-[70%] md:h-[100%]
             
             `}
         >
@@ -106,7 +107,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="h-[100%] flex flex-col justify-center  "
           >
-            <svg className={`w-[100%] h-[150px] md:h-[60px] ${styles.svgTitle}`}>
+            <svg className={`w-[100%] h-[200px] sm:h-[160px] md:h-[60px] ${styles.svgTitle}`}>
               <defs>
                 <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#60a5fa" /> {/* blue-400 */}
@@ -171,15 +172,24 @@ export default function Home() {
               ))}
             </motion.p>
 
-            <div className="mt-8 flex gap-4">
-              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                {" "}
-                Download CV{" "}
-              </button>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                {" "}
-                Download CV{" "}
-              </button>
+            <div className="mt-8 flex flex-col px-14 sm:px-0 sm:flex-row gap-4">
+            <a 
+                href="/mohammed.pdf" 
+                download
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              >
+                Download CV
+              </a>
+
+            <a
+              href="https://wa.me/201020768377"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+               Contact me
+            </a>
+
             </div>
           </motion.section>
         </section>
@@ -207,7 +217,7 @@ export default function Home() {
 
               <path fill="url(#gradient)">
                 <animate
-                  attributeName="d"
+                  // attributeName="d"
                   dur="6s"
                   repeatCount="indefinite"
                   values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
@@ -223,7 +233,8 @@ export default function Home() {
                               M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
 
                               "
-                ></animate>
+               
+               ></animate>
               </path>
             </svg>
 
@@ -274,7 +285,7 @@ export default function Home() {
 
               <path fill="url(#mygradient)" filter="url(#glow)">
                 <animate
-                  attributeName="d"
+                  // attributeName="d"
                   dur="6s"
                   repeatCount="indefinite"
                   values="M443,301.5Q392,353,352,396Q312,440,254,428.5Q196,417,143,391.5Q90,366.7,70,308Q50,250,62,181Q60,112,126,91Q192,70,258.5,44Q325,19,366.5,77Q408,135,451,192.5Q494,250,443,301.5Z;
