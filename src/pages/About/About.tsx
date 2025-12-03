@@ -91,7 +91,7 @@ export default function About() {
                   <div className="relative z-50   ">
             
                               <IconCloudDemo />
-                              <section className="mb-16 px-8 ">
+                              <section className="mb-16 px-16 ">
                                   <div className={styles.skillsWrapper}>
                                     <div className={styles.skillsSlider}>
                                       {skills.map((skill, index) => (

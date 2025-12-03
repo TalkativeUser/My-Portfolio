@@ -17,7 +17,7 @@ export interface ProjectCardProps {
 
 const ProjectCard = ({ 
   index, 
-  id,
+  // id,
   title, 
   description, 
   techStack, 

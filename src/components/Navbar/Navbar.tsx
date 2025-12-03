@@ -5,7 +5,6 @@ import { TbDeviceAnalytics } from "react-icons/tb";
 import styles from './navbar.module.css';
 import {  Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import type { Variants } from "framer-motion";
 import { CiMenuFries } from "react-icons/ci";
 import { RiCloseLargeLine } from "react-icons/ri";
 
@@ -14,26 +13,7 @@ export default function Navbar() {
   const [toggleMenu,setToggleMenu]=useState(false)
   const location = useLocation()
    const [currentIndex, setCurrentIndex] = useState(0); 
-  const toggleVariant: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      x: -30,
-      // rotateY: 360,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      // rotateY: 10,
-
-      transition: {
-        type: "spring" as const,
-        stiffness: 50,
-        duration:0.5
-      },
-    },
-  };
+ 
   
   
 

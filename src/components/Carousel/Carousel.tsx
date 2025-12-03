@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface CarouselProps {
   images: string[];
   autoPlay?: boolean;
-  interval?: number; // المدة بالـ ms لكل صورة (تستخدم لملء البار)
+  interval?: number;
 }
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -13,18 +13,19 @@ const Carousel: React.FC<CarouselProps> = ({
   interval = 3000,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+
+  // removed isHovered
+  // const [isHovered, setIsHovered] = useState(false);
+
   const [progress, setProgress] = useState<number[]>(() =>
-    images.map((_) => 0)
+    images.map(() => 0)
   );
 
   const tickRef = useRef<number | null>(null);
-  const lastTickRef = useRef<number | null>(null);
 
-  // helpers
   const resetProgressForIndex = (index: number) => {
     setProgress((prev) =>
-      prev.map((p, i) => {
+      prev.map((_, i) => {
         if (i < index) return 100;
         if (i === index) return 0;
         return 0;
@@ -33,7 +34,6 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   const goToSlide = (index: number) => {
-    // set progress such that previous ones are full, current is 0
     setCurrentIndex(index);
     resetProgressForIndex(index);
   };
@@ -41,9 +41,8 @@ const Carousel: React.FC<CarouselProps> = ({
   const nextSlide = () => {
     setCurrentIndex((prev) => {
       const next = (prev + 1) % images.length;
-      // mark current as finished and next as 0
       setProgress((p) =>
-        p.map((val, i) => (i <= prev ? 100 : i === next ? 0 : 0))
+        p.map((_, i) => (i <= prev ? 100 : i === next ? 0 : 0))
       );
       return next;
     });
@@ -52,9 +51,8 @@ const Carousel: React.FC<CarouselProps> = ({
   const prevSlide = () => {
     setCurrentIndex((prev) => {
       const next = (prev - 1 + images.length) % images.length;
-      // ensure previous ones < next full, set appropriate
       setProgress((p) =>
-        p.map((val, i) => {
+        p.map((_, i) => {
           if (i < next) return 100;
           if (i === next) return 0;
           return 0;
@@ -64,46 +62,27 @@ const Carousel: React.FC<CarouselProps> = ({
     });
   };
 
-  // Tick loop for progress (uses requestAnimationFrame for smoothness)
+  // AUTO PLAY TICK LOOP (without hover)
   useEffect(() => {
     if (!autoPlay) return;
 
-    const tickMs = 50; // we will update every 50ms (good balance smoothness/perf)
+    const tickMs = 50;
     const deltaPerTick = (tickMs / interval) * 100;
 
     function tick() {
-      if (isHovered) {
-        lastTickRef.current = performance.now();
-        tickRef.current = window.setTimeout(tick, tickMs);
-        return;
-      }
-
       setProgress((prev) => {
         const next = [...prev];
-        // If current is already 100 (maybe set by manual click), advance
-        if (next[currentIndex] >= 100 - 1e-6) {
-          // complete and advance
-          next[currentIndex] = 100;
-          // schedule advance after setting state outside setProgress
-          // but here we simply call nextSlide (which updates currentIndex)
-          // We can't call nextSlide inside setProgress sync safely; instead handle after state update
-          return next;
-        } else {
-          next[currentIndex] = Math.min(100, next[currentIndex] + deltaPerTick);
-        }
+        if (next[currentIndex] >= 100) return next;
+
+        next[currentIndex] = Math.min(100, next[currentIndex] + deltaPerTick);
         return next;
       });
 
-      // If after update current reached 100, move to next slide.
-      // We check progress from state (use a small timeout to read latest)
       tickRef.current = window.setTimeout(() => {
-        // read progress by using functional state? simpler: useRef store last progress
         setProgress((prev) => {
-          if (prev[currentIndex] >= 100 - 1e-6) {
-            // move to next
+          if (prev[currentIndex] >= 100) {
             const nextIndex = (currentIndex + 1) % images.length;
-            // set previous as 100, currentIndex becomes nextIndex with 0 progress
-            const newArr = prev.map((v, i) => {
+            const newArr = prev.map((_, i) => {
               if (i < nextIndex) return 100;
               if (i === nextIndex) return 0;
               return 0;
@@ -114,15 +93,10 @@ const Carousel: React.FC<CarouselProps> = ({
           return prev;
         });
 
-        // continue ticking
-        if (tickRef.current !== null) {
-          // schedule next tick
-          tickRef.current = window.setTimeout(tick, tickMs);
-        }
+        tickRef.current = window.setTimeout(tick, tickMs);
       }, 0);
     }
 
-    // start first tick
     if (tickRef.current === null) {
       tickRef.current = window.setTimeout(tick, tickMs);
     }
@@ -133,36 +107,27 @@ const Carousel: React.FC<CarouselProps> = ({
         tickRef.current = null;
       }
     };
-    // we intentionally depend on currentIndex, isHovered, autoPlay, interval, images.length
-  }, [autoPlay, isHovered, currentIndex, interval, images.length]);
+  }, [autoPlay, currentIndex, interval, images.length]);
 
-  // If images length changes, reset progress
   useEffect(() => {
-    setProgress(images.map((_) => 0));
+    setProgress(images.map(() => 0));
     setCurrentIndex(0);
   }, [images]);
 
-  // Pause timer on hover
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Progress Bars (like WhatsApp story) */}
+      {/* Progress bars */}
       <div className="w-full max-w-4xl px-2 mt-6">
         <div className="flex gap-2 items-center">
           {images.map((_, idx) => (
             <button
               key={idx}
               onClick={() => goToSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
               className="flex-1 h-1 bg-white/20 rounded overflow-hidden"
             >
               <div
-                className={`h-full bg-white transition-all`}
-                style={{
-                  width: `${progress[idx]}%`,
-                }}
+                className="h-full bg-white transition-all"
+                style={{ width: `${progress[idx]}%` }}
               />
             </button>
           ))}
@@ -174,8 +139,6 @@ const Carousel: React.FC<CarouselProps> = ({
         className="relative w-full max-w-4xl 
         h-72 md:h-96 lg:h-[500px]
         overflow-hidden rounded-2xl shadow-xl bg-black/10 my-6"
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
       >
         <AnimatePresence mode="wait">
           <motion.img
@@ -186,54 +149,43 @@ const Carousel: React.FC<CarouselProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            alt={`Slide ${currentIndex + 1}`}
           />
         </AnimatePresence>
 
-        {/* Left Arrow */}
+        {/* Arrows */}
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 -translate-y-1/2 
           bg-black/40 hover:bg-black/60 text-white p-3 rounded-full shadow-md transition"
-          aria-label="Previous slide"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
-        {/* Right Arrow */}
         <button
-          onClick={() => {
-            nextSlide()
-          }}
+          onClick={nextSlide}
           className="absolute right-4 top-1/2 -translate-y-1/2 
           bg-black/40 hover:bg-black/60 text-white p-3 rounded-full shadow-md transition"
-          aria-label="Next slide"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
 
-      {/* Thumbnail Slider */}
+      {/* Thumbnails */}
       <div className="flex gap-4 flex-wrap justify-center mt-2">
         {images.map((img, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`
-              w-20 h-16 md:w-24 md:h-20 
+            className={`w-20 h-16 md:w-24 md:h-20 
               overflow-hidden rounded-xl border-2 transition
               ${currentIndex === index ? 'border-purple-500 opacity-100' : 'border-transparent opacity-50 hover:opacity-100'}
             `}
           >
-            <img
-              src={img}
-              className="w-full h-full object-cover"
-              alt={`Thumbnail ${index}`}
-            />
+            <img src={img} className="w-full h-full object-cover" />
           </button>
         ))}
       </div>

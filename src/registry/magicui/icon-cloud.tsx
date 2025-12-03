@@ -18,7 +18,6 @@ function easeOutCubic(t: number): number {
 export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -33,7 +32,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     duration: number
   } | null>(null)
   const animationFrameRef = useRef<number>(0)
-  const rotationRef = useRef(rotation)
+const rotationRef = useRef({ x: 0, y: 0 });
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([])
   const imagesLoadedRef = useRef<boolean[]>([])
   // Create icon canvases once when icons/images change
@@ -122,7 +121,7 @@ useEffect(() => {
       })
     }
     setIconPositions(newIcons)
-  }, [icons, images])
+  }, [icons, images  , sphereSize])
   // Handle mouse events
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect()
