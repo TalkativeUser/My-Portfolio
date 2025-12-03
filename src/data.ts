@@ -80,8 +80,8 @@ const projectsData = [
     repoLink: "https://github.com/TalkativeUser/VSCodeClone",
     gallery: [
       "/projectsImage/vscodeClone/img1.png",
-      "/projectsImage/vscodeClone/img1.png",
-      "/projectsImage/vscodeClone/img1.png"
+      "/projectsImage/vscodeClone/img2.png",
+      "/projectsImage/vscodeClone/img3.png"
     ],
     tabsData: {
       overview: `This project is a clone of the popular Visual Studio Code editor, replicating its layout, interface, and providing users with a smooth coding experience.`,
@@ -167,8 +167,8 @@ const projectsData = [
     title: "Envaglo – Company Tasks",
     description: "Worked as a Frontend Developer at Envaglo contributing to a large-scale ERP (Enterprise Resource Planning) system for company management and accounting. Implemented and maintained UI for Sales and Purchases screens, developed the Discounts system, and built key Dashboard components for analytics and reporting. Also improved the company's online store UI and integrated frontend flows with backend APIs (inventory, payments, and accounting modules). This was a private internal project developed by the company.",
     techStack: ["React.js", "Next.js", "TypeScript", "TailwindCSS", "Redux Toolkit"],
-    repoLink: "Private Repository",
-    demoLink: "Private Repository",
+    repoLink: "",
+    demoLink: "",
     gallery: [
       "/projectsImage/envaglo/img1.png",
       "/projectsImage/envaglo/img2.png",
