@@ -2,9 +2,44 @@ import { motion } from "framer-motion";
 import styles from "./About.module.css";
 import Squares from "../../components/ui/squers";
 import TextEffect3D from "../../components/TextEffect3D/textEffect3d";
-import IconCloudDemo, { skills } from "../../components/ui/icloudDemo";
-import LearningTimeline from "../../components/ui/timeLine";
 
+import LearningTimeline from "../../components/ui/timeLine";
+import IconCloudDemo from "../../components/ui/icloudDemo";
+
+const skills = [
+  "Html5",
+  "Css3",
+  "JavaScript",
+  "React.Js",
+  "Next.Js",
+  "Redux Toolkit",
+  "Tailwind Css",
+  "React Router",
+  "Axios",
+  "Formik",
+  "Yup",
+  "ReactHookForm",
+  "Zod",
+  "React Query",
+  "Swiper Js",
+  "Framer Motion",
+  "JQuery",
+  "Chakra Ui",
+  "Mui",
+  "Json",
+  "Git",
+  "GitHub",
+  "Vs Code",
+  "Vercel",
+  "NPM",
+  "NVM",
+  "Strapi",
+  "C++" , 
+  "Data Sturcture",
+  "Algorithms",
+  "OOP" , 
+  "Problem Solving"
+];
 
 export default function About() {
 
@@ -53,10 +88,10 @@ export default function About() {
               </div>
 
               {/* Skills Section */}
-                  {/* <div className="relative z-50   ">
+                  <div className="relative z-50   ">
             
                               <IconCloudDemo />
-                              <section className="mb-16">
+                              <section className="mb-16 px-8 ">
                                   <div className={styles.skillsWrapper}>
                                     <div className={styles.skillsSlider}>
                                       {skills.map((skill, index) => (
@@ -71,7 +106,7 @@ export default function About() {
                                     </div>
                                   </div>
                         </section>
-                  </div> */}
+                  </div>
         </div>
      
 

@@ -1,5 +1,5 @@
 import {IconCloud} from "../../registry/magicui/icon-cloud";
-export const skills = [
+ const skills = [
   "html5",
   "css3",
   "javascript",
@@ -22,7 +22,7 @@ export const skills = [
   "json",
   "git",
   "github",
-  "gitlab",
+
   "visualstudiocode",
   "vercel",
   "netlify",
