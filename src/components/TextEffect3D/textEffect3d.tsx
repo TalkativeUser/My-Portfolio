@@ -1,4 +1,4 @@
-import styles from "./TextEffect3D.module.css";
+import styles from "./textEffect3D.module.css";
 
 export default function TextEffect3D({text}:{text:string}) {
   return (
